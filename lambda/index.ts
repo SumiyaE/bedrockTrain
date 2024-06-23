@@ -17,7 +17,7 @@ export const handler: Handler = async (event, context) => {
     const command : ConverseCommand = new ConverseCommand({
         modelId,
         messages: conversation,
-        inferenceConfig: { maxTokens: 512, temperature: 0.5, topP: 0.9 },
+        inferenceConfig: { maxTokens: 30, temperature: 0.5, topP: 0.9 },
     });
 
     try {
