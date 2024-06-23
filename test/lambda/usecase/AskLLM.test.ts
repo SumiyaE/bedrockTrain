@@ -1,8 +1,8 @@
-import {describe, expect, it} from "vitest";
+import {describe, it} from "vitest";
 
-describe("askLlmのテストです", () => {
+describe("AskLLMのテストです", () => {
   it("動作確認", () => {
     // このテストは、テスト対象のコードがsnapshotテストの対象であることを示すためのサンプルです
-    expect(1 + 1).toBe(2);
+    const askLLM = new AskLLM();
   });
 })
