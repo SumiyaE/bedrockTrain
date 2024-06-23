@@ -1,8 +1,10 @@
 import {describe, it} from "vitest";
+import LLMClientMock from "./LLMClientMock";
+import AskLLM from "../../../lambda/usecase/AskLLM";
 
 describe("AskLLMのテストです", () => {
-  it("動作確認", () => {
-    // このテストは、テスト対象のコードがsnapshotテストの対象であることを示すためのサンプルです
-    const askLLM = new AskLLM();
+  it("クラスがnew できること", () => {
+    const mockClient = new LLMClientMock();
+    const askLLM = new AskLLM(mockClient);
   });
 })
