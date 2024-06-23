@@ -9,7 +9,7 @@ export class BedrockTrainStack extends cdk.Stack {
     super(scope, id, props);
 
     const lambda =  new NodejsFunction(this, 'BedrockTrainLambda', {
-        entry: 'lambda/bedrock_train.ts',
+        entry: 'lambda/index.ts',
         handler: 'handler',
         runtime: Runtime.NODEJS_20_X
     })
