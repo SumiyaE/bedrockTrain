@@ -8,11 +8,11 @@ export class BedrockTrainStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    const lambda =  new NodejsFunction(this, 'BedrockTrainLambda', {
-        entry: 'lambda/index.ts',
-        handler: 'handler',
-        runtime: Runtime.NODEJS_18_X,
-        architecture:Architecture.ARM_64,
-    })
-  }
+  const lambda =  new NodejsFunction(this, 'BedrockTrainLambda', {
+      entry: 'lambda/index.ts',
+      handler: 'handler',
+      runtime: Runtime.NODEJS_LATEST,
+      architecture:Architecture.ARM_64,
+  })
+}
 }
