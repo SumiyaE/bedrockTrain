@@ -1,8 +1,8 @@
 import {expect, test} from "vitest";
 import * as cdk from "aws-cdk-lib";
 import {Template} from "aws-cdk-lib/assertions";
-import {BedrockTrainStack} from "../../../lib/bedrock_train-stack";
 import {ignoreAssetHashSerializer} from "../plugins/ignore-asset-hash";
+import {BedrockTrainStack} from "../../lib/bedrock_train-stack";
 
 test('snapshot test', () => {
   const app = new cdk.App();
