@@ -1,17 +1,15 @@
-// import * as cdk from 'aws-cdk-lib';
-// import { Template } from 'aws-cdk-lib/assertions';
-// import * as BedrockTrain from '../lib/bedrock_train-stack';
+import {expect, test} from "vitest";
+import * as cdk from "aws-cdk-lib";
+import {BedrockTrainStack} from "../lib/bedrock_train-stack";
+import {Template} from "aws-cdk-lib/assertions";
+import {ignoreAssetHashSerializer} from "./test/plugins/ignore-asset-hash";
 
-// example test. To run these tests, uncomment this file along with the
-// example resource in lib/bedrock_train-stack.ts
-test('SQS Queue Created', () => {
-//   const app = new cdk.App();
-//     // WHEN
-//   const stack = new BedrockTrain.BedrockTrainStack(app, 'MyTestStack');
-//     // THEN
-//   const template = Template.fromStack(stack);
+test('snapshot test', () => {
+  const app = new cdk.App();
+  const stack = new BedrockTrainStack(app, 'BedrockTrainStackTest', {});
+  const template = Template.fromStack(stack);
 
-//   template.hasResourceProperties('AWS::SQS::Queue', {
-//     VisibilityTimeout: 300
-//   });
+  // 次の行でプラグインをsnapshotSerializerに登録する
+  expect.addSnapshotSerializer(ignoreAssetHashSerializer); // ★追加
+  expect(template).toMatchSnapshot();
 });
