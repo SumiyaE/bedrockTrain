@@ -34,6 +34,9 @@ exports[`snapshot test 1`] = `
         },
         "Runtime": "nodejs18.x",
         "Timeout": 30,
+        "TracingConfig": {
+          "Mode": "Active",
+        },
       },
       "Type": "AWS::Lambda::Function",
     },
@@ -74,6 +77,14 @@ exports[`snapshot test 1`] = `
           "Statement": [
             {
               "Action": "bedrock:InvokeModel",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+            {
+              "Action": [
+                "xray:PutTraceSegments",
+                "xray:PutTelemetryRecords",
+              ],
               "Effect": "Allow",
               "Resource": "*",
             },

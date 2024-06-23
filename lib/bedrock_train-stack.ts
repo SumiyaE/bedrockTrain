@@ -1,7 +1,7 @@
 import * as cdk from 'aws-cdk-lib';
 import {Construct} from 'constructs';
 import {NodejsFunction} from "aws-cdk-lib/aws-lambda-nodejs";
-import {Architecture, Runtime} from "aws-cdk-lib/aws-lambda";
+import {Architecture, Runtime, Tracing} from "aws-cdk-lib/aws-lambda";
 import {Effect, PolicyStatement} from "aws-cdk-lib/aws-iam";
 
 export class BedrockTrainStack extends cdk.Stack {
@@ -20,6 +20,7 @@ export class BedrockTrainStack extends cdk.Stack {
       architecture: Architecture.ARM_64,
       initialPolicy: [bedRockAccessPolicy],
       timeout: cdk.Duration.seconds(30),
+      tracing: Tracing.ACTIVE,
     })
   }
 }
