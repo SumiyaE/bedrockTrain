@@ -1,7 +1,7 @@
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import {NodejsFunction} from "aws-cdk-lib/aws-lambda-nodejs";
-import {Runtime} from "aws-cdk-lib/aws-lambda";
+import {Architecture, Runtime} from "aws-cdk-lib/aws-lambda";
 // import * as sqs from 'aws-cdk-lib/aws-sqs';
 
 export class BedrockTrainStack extends cdk.Stack {
@@ -11,7 +11,8 @@ export class BedrockTrainStack extends cdk.Stack {
     const lambda =  new NodejsFunction(this, 'BedrockTrainLambda', {
         entry: 'lambda/index.ts',
         handler: 'handler',
-        runtime: Runtime.NODEJS_20_X
+        runtime: Runtime.NODEJS_20_X,
+        architecture:Architecture.ARM_64,
     })
   }
 }

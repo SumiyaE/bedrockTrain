@@ -1,16 +1,12 @@
 import { Handler } from 'aws-lambda';
 import {
     BedrockRuntimeClient,
-    ConverseCommand,
-    Message
+    ConverseCommand, Message,
 } from "@aws-sdk/client-bedrock-runtime";
 
 export const handler: Handler = async (event, context) => {
     console.log('EVENT: \n' + JSON.stringify(event, null, 2));
     console.log('hello this is lambda message')
-
-
-
     const client = new BedrockRuntimeClient();
     const modelId = "anthropic.claude-v2:1";
     const userMessage = "これはユーザーのメッセージです。Amazon Bedrock モデルの使い方を教えてください";
@@ -23,7 +19,7 @@ export const handler: Handler = async (event, context) => {
     ];
     console.log('conversationの作成完了')
     // 他のコマンドとの違いがわからない
-    const command = new ConverseCommand({
+    const command : ConverseCommand = new ConverseCommand({
         modelId,
         messages: conversation,
         inferenceConfig: { maxTokens: 512, temperature: 0.5, topP: 0.9 },
