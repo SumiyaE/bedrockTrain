@@ -12,12 +12,13 @@ export class BedrockTrainStack extends cdk.Stack {
             handler: 'handler',
             runtime: Runtime.NODEJS_LATEST,
             architecture: Architecture.ARM_64,
+            timeout: cdk.Duration.seconds(30),
         })
 
         // 自前の IAM ポリシー作成
         const bedRockAccessPolicy = new PolicyStatement({
             effect: Effect.ALLOW,
-            actions: ['bedrock-runtime:*'],
+            actions: ['bedrock:*'],
             resources: ['*'],
         })
 

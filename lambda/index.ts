@@ -26,6 +26,7 @@ export const handler: Handler = async (event, context) => {
 
         // Extract and print the streamed response text in real-time.
         const responseText = response.output?.message?.content?.[0].text ?? 'No response text available';
+        console.log(`Response from model: ${responseText}`);
     } catch (err) {
         console.log(`ERROR: Can't invoke '${modelId}'. Reason: ${err}`);
     }
