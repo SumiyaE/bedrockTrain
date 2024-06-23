@@ -2,8 +2,6 @@ import {Handler} from 'aws-lambda';
 import {BedrockRuntimeClient, ConverseCommand, Message} from "@aws-sdk/client-bedrock-runtime";
 
 export const handler: Handler = async (event, context) => {
-  console.log('EVENT: \n' + JSON.stringify(event, null, 2));
-  console.log('hello this is lambda message')
   const client = new BedrockRuntimeClient();
   const modelId = "anthropic.claude-v2:1";
   const userMessage = "please tell me how to use bedrock";
