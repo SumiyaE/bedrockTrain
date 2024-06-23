@@ -1,8 +1,10 @@
 import {Handler} from 'aws-lambda';
 import {BedrockRuntimeClient, ConverseCommand, Message} from "@aws-sdk/client-bedrock-runtime";
+import * as AWSXRay from 'aws-xray-sdk';
 
 export const handler: Handler = async () => {
   const client = new BedrockRuntimeClient();
+  AWSXRay.captureAWSv3Client(client);
   const modelId = "anthropic.claude-v2:1";
   const userMessage = "please tell me how to use bedrock";
 
