@@ -11,7 +11,7 @@ export class BedrockTrainStack extends cdk.Stack {
     const lambda =  new NodejsFunction(this, 'BedrockTrainLambda', {
         entry: 'lambda/index.ts',
         handler: 'handler',
-        runtime: Runtime.NODEJS_20_X,
+        runtime: Runtime.NODEJS_18_X,
         architecture:Architecture.ARM_64,
     })
   }

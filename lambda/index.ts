@@ -9,7 +9,7 @@ export const handler: Handler = async (event, context) => {
     console.log('hello this is lambda message')
     const client = new BedrockRuntimeClient();
     const modelId = "anthropic.claude-v2:1";
-    const userMessage = "これはユーザーのメッセージです。Amazon Bedrock モデルの使い方を教えてください";
+    const userMessage = "please tell me how to use bedrock";
 
     const conversation:Message[] = [
         {
@@ -17,14 +17,11 @@ export const handler: Handler = async (event, context) => {
             content: [{ text: userMessage }],
         },
     ];
-    console.log('conversationの作成完了')
-    // 他のコマンドとの違いがわからない
     const command : ConverseCommand = new ConverseCommand({
         modelId,
         messages: conversation,
         inferenceConfig: { maxTokens: 512, temperature: 0.5, topP: 0.9 },
     });
-    console.log('commandの作成完了')
 
     try {
         // Send the command to the model and wait for the response
