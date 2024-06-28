@@ -8,6 +8,7 @@ class Lambda implements LambdaInterface {
   // Decorate your handler class method
   @tracer.captureLambdaHandler()
   public async handler(_event: unknown, _context: unknown): Promise<void> {
+    // SDK の処理をトレースする実装を追加
     const client = tracer.captureAWSv3Client(new BedrockRuntimeClient());
     const modelId = "anthropic.claude-v2:1";
     const userMessage = "please tell me how to use bedrock";
