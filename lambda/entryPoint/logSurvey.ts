@@ -41,3 +41,11 @@ class Lambda implements LambdaInterface {
 
 const handlerClass = new Lambda();
 export const handler = handlerClass.handler.bind(handlerClass);
+
+/**
+ * TODO
+ * [ ] useCase, modelなどにクラスを分ける
+ * [ ] cloudwatch logからログを取得するロジックを追加する
+ * [ ] 取得したログをbedrockで解析するロジックを追加する
+ * [ ] これら一連の流れをopenTelemetryでトレースする実装を追加する
+ */
